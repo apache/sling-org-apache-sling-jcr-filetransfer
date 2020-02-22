@@ -30,6 +30,7 @@ import static org.apache.sling.testing.paxexam.SlingOptions.slingQuickstartOakTa
 import static org.ops4j.pax.exam.CoreOptions.composite;
 import static org.ops4j.pax.exam.CoreOptions.junitBundles;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
+import static org.ops4j.pax.exam.CoreOptions.options;
 
 public abstract class JcrFiletransferTestSupport extends TestSupport {
 
@@ -39,7 +40,7 @@ public abstract class JcrFiletransferTestSupport extends TestSupport {
 
     @Configuration
     public Option[] configuration() {
-        return new Option[]{
+        return options(
             baseConfiguration(),
             quickstart(),
             // Sling JCR File Transfer
@@ -51,7 +52,7 @@ public abstract class JcrFiletransferTestSupport extends TestSupport {
             // testing
             mavenBundle().groupId("org.apache.servicemix.bundles").artifactId("org.apache.servicemix.bundles.hamcrest").versionAsInProject(),
             junitBundles()
-        };
+        );
     }
 
     protected Option quickstart() {
